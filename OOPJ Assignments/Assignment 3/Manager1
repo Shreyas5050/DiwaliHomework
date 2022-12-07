@@ -1,0 +1,143 @@
+import java.util.*;
+class Account 
+{
+	private static double accountNumber;
+	private static String holderName;
+	private static double balance;
+
+	Account(){}
+	 Account( double accountNumber,String holderName,double balance)
+	{
+		this.accountNumber=accountNumber;
+		this.holderName=holderName;
+		this.balance=balance;
+	}
+
+	public static String getAccountHolderName()
+	{
+		return  holderName;
+
+	}
+	public static double getAccountNumber()
+	{
+		return accountNumber;
+
+	}
+	public static double getBalance()
+	{
+		return balance;
+
+	}
+
+    void setName(String holderName)
+   {
+   	this.holderName=holderName;
+
+   }
+    void setAccountNumber(double accountNumber)
+   {
+   		this.accountNumber=accountNumber;
+   }
+
+    void setBalance(double balance)
+   {
+   	this.balance=balance;
+   }
+
+  public static void print(Account a)
+   {
+   		System.out.print(a.accountNumber+" "+a.holderName+" "+a.balance);
+   }
+
+  public String toString()
+   {
+   	return "account no : "+getAccountNumber()+"  name: "+getAccountHolderName()+"  balance: "+getBalance();
+   }
+ 
+
+}
+
+
+
+
+class SavingAccounts extends Account 
+{
+ private static double interestRate;
+
+ //SavingAccounts(double accountNumber,String holderName,double balance)
+
+
+
+
+ public static double calculateYearlyInterest()
+ {
+ 	return (getBalance()*interestRate/100);
+ }
+	
+
+}
+class CurrentAccounts extends Account 
+{
+	CurrentAccounts()
+	{}
+	CurrentAccounts(double acc,String hname,double bal)
+	{
+		acc=getAccountNumber();
+		hname=getAccountHolderName();
+		bal=getBalance();
+
+
+	}
+}
+
+class Manager 
+{
+	List<Account>accountList;
+	
+	
+	Manager()
+	{
+		 accountList=new ArrayList<Account>();	
+	}
+	 void addAccount(Account a)
+	{
+		
+	  	accountList.add(a);
+
+		
+		
+	}
+
+
+	void printManager()
+	{
+		for(int i=0;i<accountList.size();i++)
+		{
+			System.out.println(accountList.get(i));
+		}
+
+	}
+
+
+
+	
+	public static void main(String args[])
+	{
+
+		Manager manager=new Manager();
+		
+		Account a1=new Account(10001,"Virat Kohli",514781.2);
+		
+		manager.addAccount(a1);
+
+		//manager.printManager();
+		Account a2=new Account(10002,"Rohit Sharma",824515);
+		manager.addAccount(a2);
+		CurrentAccounts a3=new CurrentAccounts(10003,"Hardik Pandya",5774158.27);
+		manager.addAccount(a3);
+		manager.printManager();
+		
+
+	}
+
+}
